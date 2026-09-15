@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Study Buddy</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #eef4ff, #f8fbff);
+            min-height: 100vh;
+            color: #172554;
+        }
+
+        nav {
+            background: #1e3a8a;
+            color: white;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+        }
+
+        nav h1 {
+            font-size: 25px;
+        }
+
+        nav span {
+            font-size: 14px;
+            color: #dbeafe;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 40px auto;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .hero h2 {
+            font-size: 38px;
+            margin-bottom: 12px;
+            color: #1e3a8a;
+        }
+
+        .hero p {
+            color: #475569;
+            font-size: 17px;
+        }
+
+        .main-card {
+            background: white;
+            padding: 30px;
+            border-radius: 18px;
+            box-shadow: 0 8px 25px rgba(30, 58, 138, 0.12);
+            margin-bottom: 30px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #1e3a8a;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #cbd5e1;
+            border-radius: 10px;
+            font-size: 16px;
+            margin-bottom: 18px;
+            outline: none;
+        }
+
+        input[type="text"]:focus {
+            border-color: #2563eb;
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+        }
+
+        button {
+            border: none;
+            padding: 14px 10px;
+            border-radius: 10px;
+            background: #2563eb;
+            color: white;
+            font-size: 14px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background: #1d4ed8;
+        }
+
+        .simple {
+            background: #0891b2;
+        }
+
+        .notes {
+            background: #7c3aed;
+        }
+
+        .quiz {
+            background: #ea580c;
+        }
+
+        .response-card {
+            background: #f8fafc;
+            border-left: 5px solid #2563eb;
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 25px;
+        }
+
+        .response-card h3 {
+            color: #1e3a8a;
+            margin-bottom: 15px;
+        }
+
+        .response-text {
+            color: #334155;
+            line-height: 1.8;
+        }
+
+        .response-text h1,
+        .response-text h2,
+        .response-text h3 {
+            color: #1e3a8a;
+            margin: 18px 0 10px;
+        }
+
+        .response-text p {
+            margin-bottom: 12px;
+        }
+
+        .response-text ul,
+        .response-text ol {
+            margin: 10px 0 15px 25px;
+        }
+
+        .response-text li {
+            margin-bottom: 7px;
+        }
+
+        .response-text strong {
+            color: #172554;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+        }
+
+        .feature {
+            background: white;
+            padding: 25px 18px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 18px rgba(15, 23, 42, 0.08);
+        }
+
+        .feature h3 {
+            margin: 12px 0 8px;
+            color: #1e3a8a;
+        }
+
+        .feature p {
+            color: #64748b;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        @media (max-width: 800px) {
+            .buttons,
+            .features {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero h2 {
+                font-size: 30px;
+            }
+        }
+
+        @media (max-width: 500px) {
+            nav {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .main-card {
+                padding: 20px;
+            }
+
+            .buttons,
+            .features {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <h1>🧠 AI Study Buddy</h1>
+        <span>Your personal learning assistant</span>
+    </nav>
+
+    <div class="container">
+
+        <section class="hero">
+            <h2>Learn Smarter with AI</h2>
+            <p>Ask questions, simplify topics, create notes, and practice with quizzes.</p>
+        </section>
+
+        <section class="main-card">
+
+            <form method="POST">
+
+                <label for="topic">Enter your study topic</label>
+
+                <input
+                    type="text"
+                    id="topic"
+                    name="topic"
+                    placeholder="Example: Database Management System"
+                    required
+                >
+
+                <div class="buttons">
+
+                    <button type="submit" name="action" value="ask">
+                        Ask AI
+                    </button>
+
+                    <button type="submit" name="action" value="simple" class="simple">
+                        Explain Simply
+                    </button>
+
+                    <button type="submit" name="action" value="notes" class="notes">
+                        Make Notes
+                    </button>
+
+                    <button type="submit" name="action" value="quiz" class="quiz">
+                        Generate Quiz
+                    </button>
+
+                </div>
+
+            </form>
+
+            {% if response %}
+            <div class="response-card">
+                <h3>📘 Study Result</h3>
+
+                <div class="response-text">
+                    {{ response | safe }}
+                </div>
+            </div>
+            {% endif %}
+
+        </section>
+
+        <section class="features">
+
+            <div class="feature">
+                <div style="font-size: 35px;">💬</div>
+                <h3>Ask AI</h3>
+                <p>Ask questions about any educational topic.</p>
+            </div>
+
+            <div class="feature">
+                <div style="font-size: 35px;">💡</div>
+                <h3>Simple Explanation</h3>
+                <p>Understand difficult concepts in easy language.</p>
+            </div>
+
+            <div class="feature">
+                <div style="font-size: 35px;">📝</div>
+                <h3>Instant Notes</h3>
+                <p>Generate quick notes and important points.</p>
+            </div>
+
+            <div class="feature">
+                <div style="font-size: 35px;">🎯</div>
+                <h3>Practice Quiz</h3>
+                <p>Test your knowledge with practice questions.</p>
+            </div>
+
+        </section>
+
+    </div>
+
+    <footer>
+        AI Study Buddy © 2026 | Built for learning
+    </footer>
+
+</body>
+</html>
